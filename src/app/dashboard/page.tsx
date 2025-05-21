@@ -20,10 +20,12 @@ export default function DashboardPage() {
   }, [ready, authenticated]);
 
   let username = '';
-  if (user?.email && typeof user.email === 'string') {
-    const parts = user.email.split('@');
-    if (parts.length > 0) {
-      username = parts[0];
+  // Handle email extraction safely
+  if (user && user.email) {
+    // Convert to unknown first, then to string
+    const emailStr = String(user.email);
+    if (emailStr.includes('@')) {
+      username = emailStr.split('@')[0];
     }
   }
 

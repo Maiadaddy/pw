@@ -78,12 +78,16 @@ export default function ProfilePage() {
       const timer = setTimeout(() => {
         setLoading(false);
         // Set display name from email if available
-        if (user?.email && typeof user.email === 'string') {
-          const nameFromEmail = user.email.split('@')[0];
-          setProfile(prev => ({
-            ...prev,
-            displayName: nameFromEmail
-          }));
+        if (user?.email) {
+          // Convert to string safely
+          const emailStr = String(user.email);
+          if (emailStr.includes('@')) {
+            const nameFromEmail = emailStr.split('@')[0];
+            setProfile(prev => ({
+              ...prev,
+              displayName: nameFromEmail
+            }));
+          }
         }
       }, 1000);
       

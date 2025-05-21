@@ -39,9 +39,12 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
     const savedName = localStorage.getItem('displayName');
     if (savedName) {
       setDisplayName(savedName);
-    } else if (user?.email && typeof user.email === 'string') {
+    } else if (user?.email) {
       // Default to email username if no saved name
-      setDisplayName(user.email.split('@')[0]);
+      const emailStr = String(user.email);
+      if (emailStr.includes('@')) {
+        setDisplayName(emailStr.split('@')[0]);
+      }
     }
     
     // Load saved profile image from localStorage

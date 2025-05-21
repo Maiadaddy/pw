@@ -33,9 +33,13 @@ export default function SettingsPage() {
         // Set display name from localStorage or email if available
         if (savedName) {
           setDisplayName(savedName);
-        } else if (user?.email && typeof user.email === 'string') {
-          const nameFromEmail = user.email.split('@')[0];
-          setDisplayName(nameFromEmail);
+        } else if (user?.email) {
+          // Convert to string safely
+          const emailStr = String(user.email);
+          if (emailStr.includes('@')) {
+            const nameFromEmail = emailStr.split('@')[0];
+            setDisplayName(nameFromEmail);
+          }
         }
         
         // Set username and bio if available
@@ -121,13 +125,13 @@ export default function SettingsPage() {
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                       <Mail className="w-4 h-4 text-primary" />
                     </div>
-                    <p className="text-gray-300">{user.email}</p>
+                    <p className="text-gray-300">{String(user.email)}</p>
                   </div>
                   <button
                     onClick={() => {
-                      if (user?.email && typeof user.email === 'string') {
+                      if (user?.email) {
                         try {
-                          unlinkEmail(user.email);
+                          unlinkEmail(String(user.email));
                         } catch (error) {
                           console.error("Error unlinking email:", error);
                         }
@@ -184,7 +188,9 @@ export default function SettingsPage() {
                     onClick={() => {
                       if (user?.wallet) {
                         try {
-                          unlinkWallet(user.wallet);
+                          // Convert wallet to string or use a specific property of wallet that is a string
+                          const walletAddress = String(user.wallet);
+                          unlinkWallet(walletAddress);
                         } catch (error) {
                           console.error("Error unlinking wallet:", error);
                         }
