@@ -19,6 +19,7 @@ export default function DashboardPage() {
     }
   }, [ready, authenticated]);
 
+  // Get username using the safe method from the hook
   const username = getUsername();
 
   if (loading) {

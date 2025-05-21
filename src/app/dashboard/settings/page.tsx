@@ -49,7 +49,7 @@ export default function SettingsPage() {
       
       return () => clearTimeout(timer);
     }
-  }, [ready, user, getEmail]);
+  }, [ready, getEmail]);
 
   // Handle form submission
   const handleProfileSubmit = (e: React.FormEvent) => {

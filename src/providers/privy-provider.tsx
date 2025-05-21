@@ -1,5 +1,4 @@
 import { PrivyProvider } from '@privy-io/react-auth';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 
 // Privy configuration
@@ -10,8 +9,6 @@ export default function PrivyAuthProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-
   return (
     <PrivyProvider
       appId={PRIVY_APP_ID}
