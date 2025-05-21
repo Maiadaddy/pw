@@ -1,11 +1,11 @@
 "use client";
 
-import { usePrivy } from "@privy-io/react-auth";
 import { useState, useEffect } from "react";
 import { Bell, Download, Key, Lock, Mail, Shield, Trash2, User, Wallet } from "lucide-react";
+import { usePrivyAuth } from "@/hooks/use-privy-auth";
 
 export default function SettingsPage() {
-  const { user, linkEmail, linkWallet, unlinkEmail, unlinkWallet, ready } = usePrivy();
+  const { user, linkEmail, linkWallet, unlinkEmail, unlinkWallet, ready, getEmail } = usePrivyAuth();
   
   // State for form inputs
   const [displayName, setDisplayName] = useState("");
@@ -33,11 +33,10 @@ export default function SettingsPage() {
         // Set display name from localStorage or email if available
         if (savedName) {
           setDisplayName(savedName);
-        } else if (user?.email) {
-          // Convert to string safely
-          const emailStr = String(user.email);
-          if (emailStr.includes('@')) {
-            const nameFromEmail = emailStr.split('@')[0];
+        } else {
+          const email = getEmail();
+          if (email && email.includes('@')) {
+            const nameFromEmail = email.split('@')[0];
             setDisplayName(nameFromEmail);
           }
         }
@@ -50,7 +49,7 @@ export default function SettingsPage() {
       
       return () => clearTimeout(timer);
     }
-  }, [ready, user]);
+  }, [ready, user, getEmail]);
 
   // Handle form submission
   const handleProfileSubmit = (e: React.FormEvent) => {
@@ -125,13 +124,14 @@ export default function SettingsPage() {
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                       <Mail className="w-4 h-4 text-primary" />
                     </div>
-                    <p className="text-gray-300">{String(user.email)}</p>
+                    <p className="text-gray-300">{getEmail()}</p>
                   </div>
                   <button
                     onClick={() => {
-                      if (user?.email) {
+                      const email = getEmail();
+                      if (email) {
                         try {
-                          unlinkEmail(String(user.email));
+                          unlinkEmail(email);
                         } catch (error) {
                           console.error("Error unlinking email:", error);
                         }

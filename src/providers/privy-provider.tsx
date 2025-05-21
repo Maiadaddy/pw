@@ -16,11 +16,12 @@ export default function PrivyAuthProvider({
     <PrivyProvider
       appId={PRIVY_APP_ID}
       config={{
-        loginMethods: ['wallet', 'email', 'google'],
+        loginMethods: ['wallet', 'email', 'google', 'twitter', 'discord', 'apple'],
         appearance: {
           theme: 'dark',
           accentColor: '#ffd230', // Primary color from your theme
           logo: '/phoenix-logo.svg',
+          showWalletLoginFirst: false,
         },
         embeddedWallets: {
           createOnLogin: 'users-without-wallets'

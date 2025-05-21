@@ -1,11 +1,11 @@
 "use client";
 
-import { usePrivy } from "@privy-io/react-auth";
 import DashboardOverview from "@/components/dashboard/overview";
+import { usePrivyAuth } from "@/hooks/use-privy-auth";
 import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
-  const { user, authenticated, ready } = usePrivy();
+  const { authenticated, ready, getUsername } = usePrivyAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,15 +19,7 @@ export default function DashboardPage() {
     }
   }, [ready, authenticated]);
 
-  let username = '';
-  // Handle email extraction safely
-  if (user && user.email) {
-    // Convert to unknown first, then to string
-    const emailStr = String(user.email);
-    if (emailStr.includes('@')) {
-      username = emailStr.split('@')[0];
-    }
-  }
+  const username = getUsername();
 
   if (loading) {
     return (
