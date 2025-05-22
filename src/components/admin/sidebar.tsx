@@ -139,10 +139,10 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
       {!isMobile && (
         <button
           onClick={toggleCollapse}
-          className="absolute -right-3 top-20 bg-primary text-black rounded-full p-1 shadow-lg z-10 hover:bg-primary/90 transition-colors"
+          className="absolute -right-3 top-20 bg-black text-primary border border-primary/30 rounded-full p-1.5 shadow-lg z-10 hover:bg-gray-900 transition-all duration-300 backdrop-blur-sm"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          {collapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronLeft className="w-3.5 h-3.5" />}
         </button>
       )}
 

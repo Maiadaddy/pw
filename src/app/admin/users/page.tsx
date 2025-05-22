@@ -296,7 +296,7 @@ export default function UserManagement() {
       )}
 
       {/* Users Table */}
-      <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+      <div className="bg-black rounded-xl border border-gray-800 overflow-hidden shadow-lg">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

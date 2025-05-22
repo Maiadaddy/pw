@@ -180,7 +180,7 @@ export default function DatabaseManagement() {
 
       {/* Database Status Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="lg:col-span-2 bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-white flex items-center">
               <Database className="w-5 h-5 mr-2 text-primary" />
@@ -272,7 +272,7 @@ export default function DatabaseManagement() {
           </div>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h2 className="text-xl font-bold text-white mb-4 flex items-center">
             <Shield className="w-5 h-5 mr-2 text-blue-500" />
             Security Status
@@ -314,7 +314,7 @@ export default function DatabaseManagement() {
       </div>
 
       {/* Database Tables */}
-      <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+      <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 border border-gray-800 overflow-hidden">
         <div className="p-4 border-b border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <h2 className="text-xl font-bold text-white flex items-center">
             <Table className="w-5 h-5 mr-2 text-primary" />
@@ -390,7 +390,7 @@ export default function DatabaseManagement() {
 
       {/* Database Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h3 className="text-lg font-bold text-white mb-3 flex items-center">
             <Key className="w-5 h-5 mr-2 text-yellow-500" />
             Query Builder
@@ -401,7 +401,7 @@ export default function DatabaseManagement() {
           </Link>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h3 className="text-lg font-bold text-white mb-3 flex items-center">
             <HardDrive className="w-5 h-5 mr-2 text-blue-500" />
             Backup & Restore
@@ -419,7 +419,7 @@ export default function DatabaseManagement() {
           </div>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h3 className="text-lg font-bold text-white mb-3 flex items-center">
             <Server className="w-5 h-5 mr-2 text-red-500" />
             Database Controls
@@ -439,7 +439,7 @@ export default function DatabaseManagement() {
       </div>
 
       {/* Saved Queries */}
-      <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+      <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
         <h2 className="text-xl font-bold text-white mb-4 flex items-center">
           <FileJson className="w-5 h-5 mr-2 text-primary" />
           Saved Queries

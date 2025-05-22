@@ -151,7 +151,7 @@ export default function AdminSettings() {
                     <input 
                       type="text" 
                       defaultValue="Pnyx Institute"
-                      className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full bg-black border shadow-lg border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </div>
                   
@@ -160,13 +160,13 @@ export default function AdminSettings() {
                     <input 
                       type="email" 
                       defaultValue="thezbdiary@gmail.com"
-                      className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full bg-black border shadow-lg border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </div>
                   
                   <div className="space-y-2">
                     <label className="text-white font-medium">Time Zone</label>
-                    <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <select className="w-full bg-black border shadow-lg border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                       <option>UTC (Coordinated Universal Time)</option>
                       <option>EST (Eastern Standard Time)</option>
                       <option>PST (Pacific Standard Time)</option>
@@ -176,7 +176,7 @@ export default function AdminSettings() {
                   
                   <div className="space-y-2">
                     <label className="text-white font-medium">Date Format</label>
-                    <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <select className="w-full bg-black border shadow-lg border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                       <option>MM/DD/YYYY</option>
                       <option>DD/MM/YYYY</option>
                       <option>YYYY-MM-DD</option>
@@ -220,7 +220,7 @@ export default function AdminSettings() {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <label className="text-white font-medium">Default Language</label>
-                    <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <select className="w-full bg-black border shadow-lg border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                       <option>English (US)</option>
                       <option>Spanish</option>
                       <option>French</option>
@@ -321,7 +321,7 @@ export default function AdminSettings() {
                   
                   <div className="space-y-2">
                     <label className="text-white font-medium">Font Size</label>
-                    <select className="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <select className="w-full bg-black border shadow-lg border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                       <option>Small</option>
                       <option selected>Medium</option>
                       <option>Large</option>

@@ -23,14 +23,13 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
       
       const isEmailAdmin = user?.email && adminEmails.includes(String(user.email));
       
-      // Check both wallet.address and walletAddress fields
-      const walletAddress = user?.wallet?.address || user?.walletAddress;
+      // Check wallet address if available
+      const walletAddress = user?.wallet?.address;
       const isWalletAdmin = walletAddress && adminWallets.includes(String(walletAddress));
       
       console.log('Admin check:', { 
         email: user?.email, 
         wallet: user?.wallet?.address,
-        walletAddress: user?.walletAddress,
         isEmailAdmin,
         isWalletAdmin
       });

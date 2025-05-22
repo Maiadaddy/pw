@@ -38,6 +38,10 @@ const nextConfig = {
     "work-1-jrimdpoeucvedgvu.prod-runtime.all-hands.dev",
     "work-2-jrimdpoeucvedgvu.prod-runtime.all-hands.dev"
   ],
+  // Configure Turbopack
+  turbopack: {
+    // Turbopack configuration options
+  },
   // Handle Reown AppKit and other problematic modules
   webpack: (config, { isServer }) => {
     // Create an alias for @reown modules to use our mock implementations

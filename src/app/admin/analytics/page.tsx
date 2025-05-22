@@ -76,14 +76,17 @@ export default function AnalyticsPage() {
   };
 
   return (
-    <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-3xl font-bold tracking-tight">Analytics Dashboard</h2>
-        <div className="flex items-center space-x-2">
+    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight text-white">Analytics Dashboard</h2>
+          <p className="text-gray-400 mt-1">Comprehensive overview of platform performance metrics</p>
+        </div>
+        <div className="flex items-center">
           <Tabs
             value={timeframe}
             onValueChange={setTimeframe}
-            className="w-[400px]"
+            className="w-full md:w-[400px]"
           >
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="day">Day</TabsTrigger>
@@ -96,46 +99,91 @@ export default function AnalyticsPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="bg-black text-white shadow-lg">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Total Users</CardTitle>
+            <div className="p-2 rounded-full bg-blue-500/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+2,350</div>
-            <p className="text-xs text-green-500">+12.5% from last month</p>
+            <p className="text-xs text-green-500 flex items-center mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              +12.5% from last month
+            </p>
           </CardContent>
         </Card>
-        <Card className="bg-black text-white shadow-lg">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Active Courses</CardTitle>
+            <div className="p-2 rounded-full bg-purple-500/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-500">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">+12</div>
-            <p className="text-xs text-green-500">+2 from last month</p>
+            <p className="text-xs text-green-500 flex items-center mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              +2 from last month
+            </p>
           </CardContent>
         </Card>
-        <Card className="bg-black text-white shadow-lg">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Revenue</CardTitle>
+            <div className="p-2 rounded-full bg-green-500/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$24,780</div>
-            <p className="text-xs text-green-500">+18.2% from last month</p>
+            <p className="text-xs text-green-500 flex items-center mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              +18.2% from last month
+            </p>
           </CardContent>
         </Card>
-        <Card className="bg-black text-white shadow-lg">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Completion Rate</CardTitle>
+            <div className="p-2 rounded-full bg-primary/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">68.2%</div>
-            <p className="text-xs text-green-500">+5.1% from last month</p>
+            <p className="text-xs text-green-500 flex items-center mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              +5.1% from last month
+            </p>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card className="bg-black text-white shadow-lg">
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader>
             <CardTitle>User Activity</CardTitle>
             <CardDescription className="text-gray-400">User engagement over time</CardDescription>
@@ -144,7 +192,7 @@ export default function AnalyticsPage() {
             <LineChart data={userActivityData} />
           </CardContent>
         </Card>
-        <Card className="bg-black text-white shadow-lg">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader>
             <CardTitle>Revenue</CardTitle>
             <CardDescription className="text-gray-400">Monthly revenue breakdown</CardDescription>
@@ -155,8 +203,8 @@ export default function AnalyticsPage() {
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card className="bg-black text-white shadow-lg">
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader>
             <CardTitle>Course Engagement</CardTitle>
             <CardDescription className="text-gray-400">Completion rates by course</CardDescription>
@@ -165,7 +213,7 @@ export default function AnalyticsPage() {
             <BarChart data={courseEngagementData} />
           </CardContent>
         </Card>
-        <Card className="bg-black text-white shadow-lg">
+        <Card className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border-gray-800">
           <CardHeader>
             <CardTitle>User Demographics</CardTitle>
             <CardDescription className="text-gray-400">Age distribution of users</CardDescription>

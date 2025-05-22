@@ -229,7 +229,7 @@ export default function CourseManagement() {
 
       {/* Course Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-4 border border-gray-800">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-gray-400 text-sm">Total Courses</h3>
             <div className="p-2 rounded-lg bg-blue-500/10">
@@ -239,7 +239,7 @@ export default function CourseManagement() {
           <p className="text-2xl font-bold text-white">{courses.length}</p>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-4 border border-gray-800">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-gray-400 text-sm">Total Students</h3>
             <div className="p-2 rounded-lg bg-primary/10">
@@ -251,7 +251,7 @@ export default function CourseManagement() {
           </p>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-4 border border-gray-800">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-gray-400 text-sm">Avg. Completion</h3>
             <div className="p-2 rounded-lg bg-green-500/10">
@@ -268,7 +268,7 @@ export default function CourseManagement() {
           </p>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-4 border border-gray-800">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-gray-400 text-sm">Total Content</h3>
             <div className="p-2 rounded-lg bg-purple-500/10">
@@ -344,7 +344,7 @@ export default function CourseManagement() {
       )}
 
       {/* Courses Table */}
-      <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+      <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 border border-gray-800 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -542,7 +542,7 @@ export default function CourseManagement() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h3 className="text-lg font-bold text-white mb-3">Course Editor</h3>
           <p className="text-gray-400 mb-4">Create and edit course content with our powerful editor.</p>
           <Link href="/admin/courses/editor" className="px-4 py-2 bg-primary text-black rounded-lg font-medium inline-flex items-center">
@@ -550,7 +550,7 @@ export default function CourseManagement() {
           </Link>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h3 className="text-lg font-bold text-white mb-3">Content Library</h3>
           <p className="text-gray-400 mb-4">Manage all your media assets, documents, and resources.</p>
           <Link href="/admin/content" className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium inline-flex items-center">
@@ -558,7 +558,7 @@ export default function CourseManagement() {
           </Link>
         </div>
         
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300 p-5 border border-gray-800">
           <h3 className="text-lg font-bold text-white mb-3">Course Analytics</h3>
           <p className="text-gray-400 mb-4">View detailed analytics and insights for all your courses.</p>
           <Link href="/admin/analytics" className="px-4 py-2 bg-green-600 text-white rounded-lg font-medium inline-flex items-center">
