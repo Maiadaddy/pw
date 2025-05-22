@@ -64,7 +64,7 @@ export default function AdminDashboard() {
     trend?: { direction: 'up' | 'down' | 'neutral', value: string },
     color?: string
   }) => (
-    <div className="bg-gray-900 rounded-xl p-4 border border-gray-800 hover:border-primary/30 transition-colors">
+    <div className="bg-black rounded-xl p-4 border border-gray-800 hover:border-primary/30 transition-colors shadow-md">
       <div className="flex justify-between items-start mb-3">
         <h3 className="text-gray-400 text-sm font-medium">{title}</h3>
         <div className={`p-2 rounded-lg ${color || 'bg-primary/10'}`}>
@@ -147,7 +147,7 @@ export default function AdminDashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Activity */}
-        <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+        <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-white">Recent Activity</h2>
             <Link href="/admin/activity" className="text-primary hover:underline text-sm flex items-center">
@@ -174,24 +174,24 @@ export default function AdminDashboard() {
         {/* System Status */}
         <div className="grid grid-cols-1 gap-6">
           {/* Performance Metrics */}
-          <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+          <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
             <h2 className="text-xl font-bold text-white mb-4">System Performance</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-gray-800/50 rounded-lg p-3 text-center">
+              <div className="bg-gray-900 rounded-lg p-3 text-center border border-gray-800">
                 <div className="flex justify-center mb-2">
                   <Server className="w-5 h-5 text-blue-400" />
                 </div>
                 <p className="text-sm text-gray-400">System Health</p>
                 <p className="text-xl font-bold text-white">{stats.systemHealth}%</p>
               </div>
-              <div className="bg-gray-800/50 rounded-lg p-3 text-center">
+              <div className="bg-gray-900 rounded-lg p-3 text-center border border-gray-800">
                 <div className="flex justify-center mb-2">
                   <Database className="w-5 h-5 text-purple-400" />
                 </div>
                 <p className="text-sm text-gray-400">Database Load</p>
                 <p className="text-xl font-bold text-white">42%</p>
               </div>
-              <div className="bg-gray-800/50 rounded-lg p-3 text-center">
+              <div className="bg-gray-900 rounded-lg p-3 text-center border border-gray-800">
                 <div className="flex justify-center mb-2">
                   <Shield className="w-5 h-5 text-red-400" />
                 </div>
@@ -202,7 +202,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Alerts */}
-          <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+          <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold text-white">System Alerts</h2>
               <Link href="/admin/alerts" className="text-primary hover:underline text-sm flex items-center">
@@ -239,7 +239,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Analytics Overview */}
-      <div className="bg-gray-900 rounded-xl p-5 border border-gray-800">
+      <div className="bg-black rounded-xl p-5 border border-gray-800 shadow-md">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold text-white">Analytics Overview</h2>
           <Link href="/admin/analytics" className="text-primary hover:underline text-sm flex items-center">
@@ -249,7 +249,7 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <h3 className="text-gray-400 font-medium">User Engagement</h3>
-            <div className="h-40 bg-gray-800/50 rounded-lg flex items-center justify-center">
+            <div className="h-40 bg-gray-900 rounded-lg flex items-center justify-center border border-gray-800">
               <BarChart3 className="w-12 h-12 text-primary/30" />
             </div>
             <div className="flex justify-between text-sm">
@@ -259,7 +259,7 @@ export default function AdminDashboard() {
           </div>
           <div className="space-y-2">
             <h3 className="text-gray-400 font-medium">Course Performance</h3>
-            <div className="h-40 bg-gray-800/50 rounded-lg flex items-center justify-center">
+            <div className="h-40 bg-gray-900 rounded-lg flex items-center justify-center border border-gray-800">
               <BarChart3 className="w-12 h-12 text-blue-500/30" />
             </div>
             <div className="flex justify-between text-sm">
@@ -269,7 +269,7 @@ export default function AdminDashboard() {
           </div>
           <div className="space-y-2">
             <h3 className="text-gray-400 font-medium">Revenue Metrics</h3>
-            <div className="h-40 bg-gray-800/50 rounded-lg flex items-center justify-center">
+            <div className="h-40 bg-gray-900 rounded-lg flex items-center justify-center border border-gray-800">
               <BarChart3 className="w-12 h-12 text-green-500/30" />
             </div>
             <div className="flex justify-between text-sm">

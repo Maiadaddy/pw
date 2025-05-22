@@ -133,7 +133,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
     <div
       className={`${
         collapsed ? 'w-16' : 'w-64'
-      } bg-gray-950 border-r border-gray-800/30 h-screen flex flex-col md:gradient-border-r transition-all duration-300 ease-in-out relative`}
+      } bg-black border-r border-gray-800/30 h-screen flex flex-col md:gradient-border-r transition-all duration-300 ease-in-out relative shadow-lg`}
     >
       {/* Toggle collapse button */}
       {!isMobile && (
@@ -168,15 +168,15 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
 
       {!collapsed && (
         <div className="px-3 py-2 mb-2 border-b border-gray-800/30">
-          <div className="bg-gray-900/50 rounded-lg p-3">
+          <div className="bg-black rounded-lg p-3 border border-gray-800/50 shadow-inner">
             <div className="flex items-center space-x-3">
-              <div className="relative w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-lg">
+              <div className="relative w-10 h-10 rounded-full bg-primary flex items-center justify-center text-black font-bold text-lg shadow-md">
                 A
               </div>
               <div>
                 <p className="text-white font-medium">Admin User</p>
                 <p className="text-xs text-gray-400">
-                  {user?.email ? String(user.email) : "admin@university.edu"}
+                  {user?.email ? String(user.email) : "thezbdiary@gmail.com"}
                 </p>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
 
       {collapsed && (
         <div className="flex justify-center py-3 border-b border-gray-800/30">
-          <div className="relative w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-lg">
+          <div className="relative w-10 h-10 rounded-full bg-primary flex items-center justify-center text-black font-bold text-lg shadow-md">
             A
           </div>
         </div>

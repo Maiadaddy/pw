@@ -168,10 +168,10 @@ export default function UserManagement() {
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     if (!sortField) return 0;
     
-    let aValue: any = a[sortField as keyof typeof a];
-    let bValue: any = b[sortField as keyof typeof b];
+    let aValue: string | number | boolean = a[sortField as keyof typeof a] as string | number | boolean;
+    let bValue: string | number | boolean = b[sortField as keyof typeof b] as string | number | boolean;
     
-    if (typeof aValue === 'string') {
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
       aValue = aValue.toLowerCase();
       bValue = bValue.toLowerCase();
     }

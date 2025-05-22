@@ -153,10 +153,10 @@ export default function CourseManagement() {
   const sortedCourses = [...filteredCourses].sort((a, b) => {
     if (!sortField) return 0;
     
-    let aValue: any = a[sortField as keyof typeof a];
-    let bValue: any = b[sortField as keyof typeof b];
+    let aValue: string | number = a[sortField as keyof typeof a] as string | number;
+    let bValue: string | number = b[sortField as keyof typeof b] as string | number;
     
-    if (typeof aValue === 'string') {
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
       aValue = aValue.toLowerCase();
       bValue = bValue.toLowerCase();
     }
