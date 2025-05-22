@@ -7,49 +7,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import AdminSidebar from "@/components/admin/sidebar";
+import { useAdmin } from "@/context/admin-context";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { authenticated, ready, user } = usePrivy();
+  const { authenticated, ready } = usePrivy();
+  const { isAdmin } = useAdmin();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
 
   // Check if user is admin and redirect if not
   useEffect(() => {
     if (ready) {
       if (!authenticated) {
         router.push("/");
+      } else if (!isAdmin) {
+        // Redirect non-admin users to dashboard
+        router.push("/dashboard");
       } else {
-        // In a real application, you would check if the user has admin privileges
-        // For now, we'll simulate this check
-        // This could be based on a role in the user object, a database check, etc.
-        const checkAdminStatus = async () => {
-          // Check if user is admin based on email
-          const adminEmails = ['thezbdiary@gmail.com']; // Set admin email for testing
-          const isUserAdmin = user?.email && adminEmails.includes(String(user.email));
-          
-          setIsAdmin(isUserAdmin || false); // Only allow authorized admin users
-          
-          if (!isUserAdmin) { // Enforce admin access
-            router.push("/dashboard");
-          } else {
-            // Add a small delay to ensure smooth transitions
-            const timer = setTimeout(() => {
-              setIsLoading(false);
-            }, 500);
-            return () => clearTimeout(timer);
-          }
-        };
-        
-        checkAdminStatus();
+        // Add a small delay to ensure smooth transitions
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+        return () => clearTimeout(timer);
       }
     }
-  }, [ready, authenticated, router, user]);
+  }, [ready, authenticated, router, isAdmin]);
 
   // Close sidebar when clicking outside on mobile
   useEffect(() => {

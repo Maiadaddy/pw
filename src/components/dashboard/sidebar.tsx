@@ -7,8 +7,9 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { 
   LayoutDashboard, BookOpen, Award, Settings, LogOut, X, User, 
-  ChevronLeft, ChevronRight, BarChart3, Upload
+  ChevronLeft, ChevronRight, BarChart3, Upload, Shield
 } from "lucide-react";
+import { useAdmin } from "@/context/admin-context";
 
 interface DashboardSidebarProps {
   onClose?: () => void;
@@ -16,6 +17,7 @@ interface DashboardSidebarProps {
 
 export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
   const { logout, user } = usePrivy();
+  const { isAdmin } = useAdmin();
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(true); // Default to collapsed
   const [isMobile, setIsMobile] = useState(false);
@@ -56,7 +58,8 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
     return () => window.removeEventListener('resize', checkIfMobile);
   }, [user]);
 
-  const navItems = [
+  // Base navigation items
+  const baseNavItems = [
     { name: "Overview", path: "/dashboard", icon: <LayoutDashboard className="w-5 h-5" /> },
     { name: "Profile", path: "/dashboard/profile", icon: <User className="w-5 h-5" /> },
     { name: "Analytics", path: "/dashboard/profile/analytics", icon: <BarChart3 className="w-5 h-5" /> },
@@ -64,6 +67,14 @@ export default function DashboardSidebar({ onClose }: DashboardSidebarProps) {
     { name: "Rewards", path: "/dashboard/rewards", icon: <Award className="w-5 h-5" /> },
     { name: "Settings", path: "/dashboard/settings", icon: <Settings className="w-5 h-5" /> },
   ];
+  
+  // Admin-only navigation items
+  const adminNavItems = isAdmin ? [
+    { name: "Command Center", path: "/admin", icon: <Shield className="w-5 h-5" /> }
+  ] : [];
+  
+  // Combine navigation items
+  const navItems = [...baseNavItems, ...adminNavItems];
 
   const handleNavClick = () => {
     if (onClose) {

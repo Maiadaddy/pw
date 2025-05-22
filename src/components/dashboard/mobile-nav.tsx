@@ -3,13 +3,16 @@
 import { usePrivy } from "@privy-io/react-auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BookOpen, Award, Settings, User, BarChart3 } from "lucide-react";
+import { LayoutDashboard, BookOpen, Award, Settings, User, BarChart3, Shield } from "lucide-react";
+import { useAdmin } from "@/context/admin-context";
 
 export default function MobileNav() {
   const { logout } = usePrivy();
+  const { isAdmin } = useAdmin();
   const pathname = usePathname();
 
-  const navItems = [
+  // Base navigation items
+  const baseNavItems = [
     { 
       name: "Overview", 
       path: "/dashboard", 
@@ -30,15 +33,25 @@ export default function MobileNav() {
       path: "/dashboard/learn", 
       icon: <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" /> 
     },
+  ];
+  
+  // Admin-only navigation items
+  const adminNavItems = isAdmin ? [
+    { 
+      name: "Admin", 
+      path: "/admin", 
+      icon: <Shield className="h-4 w-4 sm:h-5 sm:w-5" /> 
+    }
+  ] : [
     { 
       name: "Rewards", 
       path: "/dashboard/rewards", 
       icon: <Award className="h-4 w-4 sm:h-5 sm:w-5" /> 
-    },
+    }
   ];
 
-  // Include all 5 items for better navigation
-  const mobileNavItems = navItems;
+  // Combine navigation items - limit to 5 for mobile
+  const mobileNavItems = [...baseNavItems, ...adminNavItems].slice(0, 5);
 
   return (
     <div className="md:hidden">

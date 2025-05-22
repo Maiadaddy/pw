@@ -1,29 +1,22 @@
 import { usePrivy } from "@privy-io/react-auth";
 import { useState, useEffect } from "react";
+import { useAdmin } from "@/context/admin-context";
 
 export function useAdminCheck() {
-  const { user, authenticated, ready } = usePrivy();
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { authenticated, ready } = usePrivy();
+  const { isAdmin: isAdminFromContext } = useAdmin();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (ready && authenticated && user) {
-      // In a real application, this would check against a database or API
-      // For demo purposes, we'll consider all authenticated users as admins
-      // You would replace this with your actual admin check logic
+    if (ready) {
+      // Use a small timeout to ensure admin context has been evaluated
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 300);
       
-      // Example admin check:
-      // const adminEmails = ['admin@example.com'];
-      // const isUserAdmin = user.email && adminEmails.includes(String(user.email));
-      
-      // For demo, set all users as admins
-      setIsAdmin(true);
-      setLoading(false);
-    } else if (ready) {
-      setIsAdmin(false);
-      setLoading(false);
+      return () => clearTimeout(timer);
     }
-  }, [user, authenticated, ready]);
+  }, [ready, authenticated]);
 
-  return { isAdmin, loading };
+  return { isAdmin: isAdminFromContext, loading };
 }

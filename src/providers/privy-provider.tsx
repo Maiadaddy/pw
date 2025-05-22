@@ -1,5 +1,6 @@
 import { PrivyProvider } from '@privy-io/react-auth';
 import React from 'react';
+import { AdminProvider } from '@/context/admin-context';
 
 // Privy configuration
 const PRIVY_APP_ID = 'cmayaiqk700zqjy0mzhvv92n0';
@@ -25,7 +26,9 @@ export default function PrivyAuthProvider({
         }
       }}
     >
-      {children}
+      <AdminProvider>
+        {children}
+      </AdminProvider>
     </PrivyProvider>
   );
 }

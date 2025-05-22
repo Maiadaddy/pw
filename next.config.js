@@ -32,7 +32,12 @@ const nextConfig = {
     ],
   },
   // Allow development origins for iframe access
-  allowedDevOrigins: ["work-1-dwfajxuoiycpzfnc.prod-runtime.all-hands.dev", "work-2-dwfajxuoiycpzfnc.prod-runtime.all-hands.dev"],
+  allowedDevOrigins: [
+    "work-1-dwfajxuoiycpzfnc.prod-runtime.all-hands.dev", 
+    "work-2-dwfajxuoiycpzfnc.prod-runtime.all-hands.dev",
+    "work-1-jrimdpoeucvedgvu.prod-runtime.all-hands.dev",
+    "work-2-jrimdpoeucvedgvu.prod-runtime.all-hands.dev"
+  ],
   // Handle Reown AppKit and other problematic modules
   webpack: (config, { isServer }) => {
     // Create an alias for @reown modules to use our mock implementations
