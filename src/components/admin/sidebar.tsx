@@ -56,7 +56,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
     { 
       name: "Analytics", 
       path: "/admin/analytics", 
-      icon: <BarChart3 className="w-5 h-5" /> 
+      icon: <BarChart3 className="w-5 h-5 text-primary" /> 
     },
     { 
       name: "Rewards & Badges", 

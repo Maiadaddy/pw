@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EnhancedLineChart, EnhancedBarChart, EnhancedPieChart, ChartSkeleton } from "@/components/charts/enhanced-charts";
 import { motion } from "framer-motion";
-import Head from "next/head";
 
 // Improved EnhancedChartData interface with more flexible insight types
 interface EnhancedChartData {
@@ -28,7 +27,7 @@ interface EnhancedChartData {
   }[];
 }
 
-export default function AnalyticsPage() {
+export default function AnalyticsRedesignPage() {
   const [timeframe, setTimeframe] = useState("week");
   const [loading, setLoading] = useState(true);
   const [dateRange, setDateRange] = useState({
@@ -200,14 +199,6 @@ export default function AnalyticsPage() {
       }
     ]
   };
-  
-  const topCoursesData = [
-    { name: "Blockchain Fundamentals", students: 456, completion: 78, rating: 4.8 },
-    { name: "Smart Contract Development", students: 342, completion: 65, rating: 4.7 },
-    { name: "DeFi Principles", students: 289, completion: 82, rating: 4.9 },
-    { name: "Web3 Security", students: 267, completion: 71, rating: 4.6 },
-    { name: "NFT Creation Workshop", students: 198, completion: 59, rating: 4.5 },
-  ];
 
   // Date Range Picker Component
   const DateRangePicker = () => {
@@ -423,253 +414,242 @@ export default function AnalyticsPage() {
     );
   };
 
-  return (
-    <>
-      <Head>
-        <title>Analytics Dashboard | Command Center</title>
-        <meta name="description" content="Comprehensive analytics dashboard for monitoring platform performance, user engagement, and revenue metrics." />
-        <meta name="keywords" content="analytics, dashboard, metrics, performance, user engagement, revenue" />
-        <meta property="og:title" content="Analytics Dashboard | Command Center" />
-        <meta property="og:description" content="Comprehensive analytics dashboard for monitoring platform performance, user engagement, and revenue metrics." />
-        <meta property="og:type" content="website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-      </Head>
-      
+  // Loading Skeleton
+  if (loading) {
+    return (
       <div className="flex-1 space-y-8 p-6 md:p-8 pt-6 max-w-[1600px] mx-auto">
-        {loading ? (
-          <div className="flex-1 space-y-8 p-6 md:p-8 pt-6 max-w-[1600px] mx-auto">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="animate-pulse">
-                <div className="h-8 w-64 bg-gray-800 rounded mb-2"></div>
-                <div className="h-4 w-96 bg-gray-800 rounded"></div>
-              </div>
-              <div className="animate-pulse">
-                <div className="h-10 w-full md:w-[400px] bg-gray-800 rounded"></div>
-              </div>
-            </div>
-            
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {[1, 2, 3, 4].map(i => (
-                <Card key={i} className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border border-gray-800">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                    <div className="h-4 w-24 bg-gray-800 rounded animate-pulse"></div>
-                    <div className="p-2 rounded-full bg-gray-800 animate-pulse"></div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="h-8 w-20 bg-gray-800 rounded animate-pulse mb-2"></div>
-                    <div className="flex items-center justify-between mt-1">
-                      <div className="h-3 w-32 bg-gray-800 rounded animate-pulse"></div>
-                      <div className="h-3 w-20 bg-gray-800 rounded animate-pulse"></div>
-                    </div>
-                    <div className="h-1 w-full bg-gray-800 mt-3 rounded-full"></div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            
-            {/* Chart Skeletons */}
-            <div className="grid gap-8 grid-cols-1">
-              <ChartSkeleton />
-              <ChartSkeleton />
-              <ChartSkeleton />
-              <ChartSkeleton />
-              <ChartSkeleton />
-            </div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="animate-pulse">
+            <div className="h-8 w-64 bg-gray-800 rounded mb-2"></div>
+            <div className="h-4 w-96 bg-gray-800 rounded"></div>
           </div>
-        ) : (
-          <>
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2 className="text-3xl font-bold tracking-tight text-white">Analytics Dashboard</h2>
-                <p className="text-gray-400 mt-1">Comprehensive overview of platform performance metrics</p>
-                <p className="text-primary text-sm mt-2">
-                  Viewing data from {dateRange.startDate.toLocaleDateString()} to {dateRange.endDate.toLocaleDateString()}
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="w-full md:w-[400px]"
-              >
-                <DateRangePicker />
-              </motion.div>
-            </div>
-
-            {/* Time Period Selector */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex justify-center"
-            >
-              <Tabs
-                value={timeframe}
-                onValueChange={setTimeframe}
-                className="w-full max-w-md"
-              >
-                <TabsList className="grid w-full grid-cols-4 bg-gray-900 p-1">
-                  <TabsTrigger 
-                    value="day" 
-                    className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
-                  >
-                    Day
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="week" 
-                    className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
-                  >
-                    Week
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="month" 
-                    className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
-                  >
-                    Month
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="year" 
-                    className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
-                  >
-                    Year
-                  </TabsTrigger>
-                </TabsList>
-              </Tabs>
-            </motion.div>
-
-            {/* Key Metrics Cards */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
-            >
-              <KeyMetricCard
-                title="Total Users"
-                value="2,350"
-                change={12.5}
-                secondaryValue="258"
-                secondaryLabel="active now"
-                icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
-                }
-                color="blue"
-              />
-              
-              <KeyMetricCard
-                title="Active Courses"
-                value="12"
-                change={20}
-                secondaryValue="3"
-                secondaryLabel="in development"
-                icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-500">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                  </svg>
-                }
-                color="purple"
-              />
-              
-              <KeyMetricCard
-                title="Revenue"
-                value="$24,780"
-                change={18.2}
-                secondaryValue="$820"
-                secondaryLabel="today"
-                icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
-                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                  </svg>
-                }
-                color="green"
-              />
-              
-              <KeyMetricCard
-                title="Completion Rate"
-                value="68.2%"
-                change={5.1}
-                secondaryValue="Target:"
-                secondaryLabel="75%"
-                icon={
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                }
-                color="primary"
-              />
-            </motion.div>
-
-            {/* Main Charts - Each in its own row for better visibility */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="grid gap-8 grid-cols-1"
-            >
-              <EnhancedLineChart data={userActivityData} />
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="grid gap-8 grid-cols-1"
-            >
-              <EnhancedBarChart data={revenueData} />
-            </motion.div>
-
-            {/* Course Engagement and Demographics - Each in its own row */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="grid gap-8 grid-cols-1"
-            >
-              <EnhancedBarChart data={courseEngagementData} />
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="grid gap-8 grid-cols-1"
-            >
-              <EnhancedPieChart data={userDemographicsData} />
-            </motion.div>
-
-            {/* Engagement Metrics */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="grid gap-8 grid-cols-1"
-            >
-              <EnhancedLineChart data={engagementMetricsData} />
-            </motion.div>
-              
-            {/* Platform Growth */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="grid gap-8 grid-cols-1"
-            >
-              <PlatformGrowthCard />
-            </motion.div>
-          </>
-        )}
+          <div className="animate-pulse">
+            <div className="h-10 w-full md:w-[400px] bg-gray-800 rounded"></div>
+          </div>
+        </div>
+        
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {[1, 2, 3, 4].map(i => (
+            <Card key={i} className="bg-black text-white shadow-lg hover:shadow-primary/5 transition-all duration-300 border border-gray-800">
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <div className="h-4 w-24 bg-gray-800 rounded animate-pulse"></div>
+                <div className="p-2 rounded-full bg-gray-800 animate-pulse"></div>
+              </CardHeader>
+              <CardContent>
+                <div className="h-8 w-20 bg-gray-800 rounded animate-pulse mb-2"></div>
+                <div className="flex items-center justify-between mt-1">
+                  <div className="h-3 w-32 bg-gray-800 rounded animate-pulse"></div>
+                  <div className="h-3 w-20 bg-gray-800 rounded animate-pulse"></div>
+                </div>
+                <div className="h-1 w-full bg-gray-800 mt-3 rounded-full"></div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        
+        {/* Chart Skeletons */}
+        <div className="grid gap-8 grid-cols-1">
+          <ChartSkeleton />
+          <ChartSkeleton />
+          <ChartSkeleton />
+          <ChartSkeleton />
+          <ChartSkeleton />
+        </div>
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="flex-1 space-y-8 p-6 md:p-8 pt-6 max-w-[1600px] mx-auto">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold tracking-tight text-white">Analytics Dashboard</h2>
+          <p className="text-gray-400 mt-1">Comprehensive overview of platform performance metrics</p>
+          <p className="text-primary text-sm mt-2">
+            Viewing data from {dateRange.startDate.toLocaleDateString()} to {dateRange.endDate.toLocaleDateString()}
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="w-full md:w-[400px]"
+        >
+          <DateRangePicker />
+        </motion.div>
+      </div>
+
+      {/* Time Period Selector */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center"
+      >
+        <Tabs
+          value={timeframe}
+          onValueChange={setTimeframe}
+          className="w-full max-w-md"
+        >
+          <TabsList className="grid w-full grid-cols-4 bg-gray-900 p-1">
+            <TabsTrigger 
+              value="day" 
+              className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
+            >
+              Day
+            </TabsTrigger>
+            <TabsTrigger 
+              value="week" 
+              className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
+            >
+              Week
+            </TabsTrigger>
+            <TabsTrigger 
+              value="month" 
+              className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
+            >
+              Month
+            </TabsTrigger>
+            <TabsTrigger 
+              value="year" 
+              className="data-[state=active]:bg-gray-800 data-[state=active]:text-white"
+            >
+              Year
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </motion.div>
+
+      {/* Key Metrics Cards */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+      >
+        <KeyMetricCard
+          title="Total Users"
+          value="2,350"
+          change={12.5}
+          secondaryValue="258"
+          secondaryLabel="active now"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          }
+          color="blue"
+        />
+        
+        <KeyMetricCard
+          title="Active Courses"
+          value="12"
+          change={20}
+          secondaryValue="3"
+          secondaryLabel="in development"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-500">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          }
+          color="purple"
+        />
+        
+        <KeyMetricCard
+          title="Revenue"
+          value="$24,780"
+          change={18.2}
+          secondaryValue="$820"
+          secondaryLabel="today"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          }
+          color="green"
+        />
+        
+        <KeyMetricCard
+          title="Completion Rate"
+          value="68.2%"
+          change={5.1}
+          secondaryValue="Target:"
+          secondaryLabel="75%"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          }
+          color="primary"
+        />
+      </motion.div>
+
+      {/* Main Charts - Each in its own row for better visibility */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="grid gap-8 grid-cols-1"
+      >
+        <EnhancedLineChart data={userActivityData} />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="grid gap-8 grid-cols-1"
+      >
+        <EnhancedBarChart data={revenueData} />
+      </motion.div>
+
+      {/* Course Engagement and Demographics - Each in its own row */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="grid gap-8 grid-cols-1"
+      >
+        <EnhancedBarChart data={courseEngagementData} />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="grid gap-8 grid-cols-1"
+      >
+        <EnhancedPieChart data={userDemographicsData} />
+      </motion.div>
+
+      {/* Engagement Metrics */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="grid gap-8 grid-cols-1"
+      >
+        <EnhancedLineChart data={engagementMetricsData} />
+      </motion.div>
+        
+      {/* Platform Growth */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="grid gap-8 grid-cols-1"
+      >
+        <PlatformGrowthCard />
+      </motion.div>
+    </div>
   );
 }
